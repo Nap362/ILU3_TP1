@@ -3,9 +3,9 @@ package cartes;
 import cartes.Probleme.Type;
 import jeu.Sabot;
 
-public class JeuDeCartes {
+public class JeuDeCartes{
 	private Carte[] typesDeCartes = new Carte[19];
-	private Sabot listeCartes;
+	public Sabot listeCartes;
 	
 	public JeuDeCartes() {
 		Carte prioritaire = new Botte(1, Type.FEU);
@@ -29,15 +29,39 @@ public class JeuDeCartes {
 		Carte feuVert = new Parade(14, Type.FEU);
 		typesDeCartes[9] = feuVert;
 		Carte essence = new Parade(6, Type.ESSENCE);
+		typesDeCartes[10] = essence;
 		Carte roueSecours = new Parade(6, Type.CREVAISON);
+		typesDeCartes[11] = roueSecours;
 		Carte reparation = new Parade(6, Type.ACCIDENT);
+		typesDeCartes[12] = reparation;
 		Carte finLimite = new FinLimite(6);
+		typesDeCartes[13] = finLimite;
 		Carte borne25 = new Borne(10, 25);
+		typesDeCartes[14] = borne25;
 		Carte borne50 = new Borne(10, 50);
+		typesDeCartes[15] = borne50;
 		Carte borne75 = new Borne(10, 75);
+		typesDeCartes[16] = borne75;
 		Carte borne100 = new Borne(12, 100);
+		typesDeCartes[17] = borne100;
 		Carte borne200 = new Borne(4, 200);
-		listeCartes = new Sabot(110);
-		listeCartes.ajouterFamilleCarte(borne200);
+		typesDeCartes[18] = borne200;
+		listeCartes = new Sabot(106);
+		listeCartes.ajouterFamillesCarte(typesDeCartes);
+	}
+	
+	public boolean checkCount() {
+		for (Carte carteType : typesDeCartes) {
+			int nbrExemplaires = 0;
+			for (Carte carte : listeCartes) {
+				if (carteType.equals(carte)) {
+					nbrExemplaires++;
+				}
+			}
+			if (nbrExemplaires!=carteType.getNombre()) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

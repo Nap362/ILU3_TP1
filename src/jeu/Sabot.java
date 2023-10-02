@@ -9,6 +9,7 @@ import cartes.Carte;
 public class Sabot implements Iterable<Carte> {
 	private Carte[] cartes;
 	private int nbCartes = 0;
+	private int nbOperations = 0;
 
 	public Sabot(int capacite) {
 		this.cartes = new Carte[capacite];
@@ -25,6 +26,7 @@ public class Sabot implements Iterable<Carte> {
 		} else {
 			throw new NoSuchElementException();
 		}
+		nbOperations++;
 	}
 
 	public void ajouterFamilleCarte(Carte carte) {
@@ -33,7 +35,7 @@ public class Sabot implements Iterable<Carte> {
 		}
 	}
 
-	public void ajouterFamilleCarte(Carte... cartes) {
+	public void ajouterFamillesCarte(Carte... cartes) {
 		for (Carte carte : cartes) {
 			ajouterFamilleCarte(carte);
 		}
@@ -41,8 +43,7 @@ public class Sabot implements Iterable<Carte> {
 
 	private class Iterateur implements Iterator<Carte> {
 		private int indiceIt = 0;
-		private int nombreOperationsReference = nbCartes;
-		private int nombreOperations = nombreOperationsReference;
+		private int nbOperationsReference = nbOperations;
 		private boolean nextEffectue = false;
 
 
@@ -74,13 +75,13 @@ public class Sabot implements Iterable<Carte> {
 			}
 			nbCartes--;
 			indiceIt--;
-			nombreOperations++;
-			nombreOperationsReference++;
+			nbOperations++;
+			nbOperationsReference++;
 			nextEffectue=false;
 		}
 		
 		private void verificationConcurrence(){
-			 if (nombreOperations != nombreOperationsReference) {
+			 if (nbOperations != nbOperationsReference) {
 				 throw new ConcurrentModificationException();
 			 }
 		}
