@@ -15,5 +15,13 @@ public class FinLimite extends Limite {
 	public String toString() {
 		return "Fin de limite de vitesse";
 	}
+	
+	public boolean equals(Object objet) {
+		if (objet instanceof FinLimite) {
+			FinLimite carte = (FinLimite) objet;
+			return carte.toString() == toString();
+		}
+		return false;
+	}
 
 }

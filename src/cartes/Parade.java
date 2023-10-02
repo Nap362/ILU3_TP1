@@ -39,4 +39,12 @@ public class Parade extends Bataille {
 
 		return toString;
 	}
+	
+	public boolean equals(Object objet) {
+		if (objet instanceof Parade) {
+			Parade carte = (Parade) objet;
+			return carte.toString() == toString();
+		}
+		return false;
+	}
 }

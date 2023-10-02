@@ -39,5 +39,13 @@ public class Botte extends Probleme {
 
 		return toString;
 	}
+	
+	public boolean equals(Object objet) {
+		if (objet instanceof Botte) {
+			Botte carte = (Botte) objet;
+			return carte.toString() == toString();
+		}
+		return false;
+	}
 
 }

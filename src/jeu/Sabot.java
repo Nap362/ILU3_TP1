@@ -74,8 +74,8 @@ public class Sabot implements Iterable<Carte> {
 			}
 			nbCartes--;
 			indiceIt--;
-			nombreOperations--;
-			nombreOperationsReference--;
+			nombreOperations++;
+			nombreOperationsReference++;
 			nextEffectue=false;
 		}
 		

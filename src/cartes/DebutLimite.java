@@ -15,5 +15,13 @@ public class DebutLimite extends Limite {
 	public String toString() {
 		return "Limite de vitesse";
 	}
+	
+	public boolean equals(Object objet) {
+		if (objet instanceof DebutLimite) {
+			DebutLimite carte = (DebutLimite) objet;
+			return carte.toString() == toString();
+		}
+		return false;
+	}
 
 }

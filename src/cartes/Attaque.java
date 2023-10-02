@@ -40,5 +40,13 @@ public class Attaque extends Bataille {
 
 		return toString;
 	}
+	
+	public boolean equals(Object objet) {
+		if (objet instanceof Attaque) {
+			Attaque carte = (Attaque) objet;
+			return carte.toString() == toString();
+		}
+		return false;
+	}
 
 }
